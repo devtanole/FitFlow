@@ -32,17 +32,17 @@ app.use(express.json());
 
 app.post('api/auth/sign-up', async (req, res, next) => {
   try {
-    const { fullName, username, password, location, bio, weight } = req.body;
+    const { fullName, username, password, location, weight } = req.body;
     if (!fullName || !username || !password || !location || !weight) {
       throw new ClientError(400, 'a required field is missing');
     }
     const hashedPassword = await argon2.hash(password);
     const sql = `
-  insert into "users" ("fullName", "username", "hashedPassword", "location", "bio", "weight")
-  values ($1, $2, $3, $4, $5, $6)
+  insert into "users" ("fullName", "username", "hashedPassword", "location", "weight")
+  values ($1, $2, $3, $4, $5)
   returning "userId", "username", "createdAt";
     `;
-    const params = [fullName, username, hashedPassword, location, bio, weight];
+    const params = [fullName, username, hashedPassword, location, weight];
     const result = await db.query(sql, params);
     const newUser = result.rows[0];
     res.status(201).json(newUser);
