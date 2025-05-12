@@ -11,7 +11,6 @@ export type User = {
   password: string;
   weight: number;
   location: string;
-  profilePictureUrl: string;
 };
 
 export type Post = {
