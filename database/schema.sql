@@ -9,7 +9,6 @@ create schema "public";
 CREATE TABLE "users" (
   "userId" serial PRIMARY KEY,
   "fullName" text NOT NULL,
-  "bio" text NOT NULL,
   "weight" decimal NOT NULL,
   "username" text UNIQUE NOT NULL,
   "hashedPassword" text NOT NULL,

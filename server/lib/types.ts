@@ -6,12 +6,10 @@ export type Auth = {
 export type User = {
   userId: number;
   fullName: string;
-  bio: string;
   username: string;
   password: string;
   weight: number;
   location: string;
-  profilePictureUrl: string;
 };
 
 export type Post = {

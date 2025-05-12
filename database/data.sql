@@ -4,10 +4,10 @@
 -- EXAMPLE:
 
 -- Inserting sample users
-INSERT INTO "users" ("fullName", "bio", "weight", "username", "hashedPassword", "createdAt", "location")
+INSERT INTO "users" ("fullName", "weight", "username", "hashedPassword", "createdAt", "location")
 VALUES
-  ('John Doe', 'Fitness enthusiast', 70, 'john_doe', 'hashed_password_123', now(), 'New York'),
-  ('Jane Smith', 'Nutrition expert', 60, 'jane_smith', 'hashed_password_456', now(), 'Los Angeles');
+  ('John Doe', 70, 'john_doe', 'hashed_password_123', now(), 'New York'),
+  ('Jane Smith', 60, 'jane_smith', 'hashed_password_456', now(), 'Los Angeles');
 
 -- Inserting sample activities
 INSERT INTO "activities" ("name", "met", "intensity", "category")
