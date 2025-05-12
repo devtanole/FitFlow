@@ -3,6 +3,13 @@ import 'dotenv/config';
 import express from 'express';
 import pg from 'pg';
 import { ClientError, errorMiddleware } from './lib/index.js';
+import type {
+  User,
+  MealEntry,
+  WorkoutEntry,
+  Activity,
+  Post,
+} from './lib/types.js';
 
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
@@ -11,7 +18,14 @@ const db = new pg.Pool({
   },
 });
 
+const hashSecret = process.env.TOKEN_SECRET;
+if (!hashSecret) {
+  throw new Error('TOKEN_SECRET not found in .env');
+}
+
 const app = express();
+
+app.use(express.json());
 
 // Create paths for static directories
 const reactStaticDir = new URL('../client/dist', import.meta.url).pathname;
